@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRISM Paper Revision Checklist — Paper ID 307</title>
+<style>
+:root {
+  color-scheme: light;
+  --ink: #1b2a3a; --muted: #617184; --line: #dce4ed;
+  --panel: #ffffff; --bg: #f3f6fa; --accent: #1f5b91; --accent-soft: #e8f1fa;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+.wrap { max-width: 980px; margin: 0 auto; padding: 28px 18px 56px; }
+header { padding: 26px; border-radius: 18px; background: var(--panel); border: 1px solid var(--line); box-shadow: 0 8px 24px #19334d0a; }
+.eyebrow { color: var(--accent); text-transform: uppercase; font-size: .75rem; font-weight: 800; letter-spacing: .12em; }
+h1 { margin: 6px 0 8px; line-height: 1.15; font-size: clamp(1.7rem, 4vw, 2.5rem); }
+.subtitle { color: var(--muted); margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.pill { background: var(--accent-soft); color: #214e77; border-radius: 999px; padding: 5px 11px; font-size: .85rem; font-weight: 650; }
+.progress-card { margin: 16px 0; padding: 18px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+.progress-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-weight: 750; }
+.progress-track { height: 9px; border-radius: 999px; background: #e6ebf1; overflow: hidden; margin: 12px 0 8px; }
+#progress-bar { width: 0%; height: 100%; background: var(--accent); border-radius: inherit; transition: width .18s ease; }
+.small { font-size: .88rem; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+button { border: 1px solid #c8d4e0; border-radius: 9px; padding: 8px 12px; font: inherit; font-size: .9rem; font-weight: 650; color: var(--ink); background: #fff; cursor: pointer; }
+button:hover { border-color: var(--accent); background: #f5f9fd; }
+.category { margin-top: 14px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--panel); }
+.section-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 17px 20px; border-bottom: 1px solid var(--line); background: #fbfcfe; }
+h2 { margin: 0; font-size: 1.08rem; line-height: 1.35; }
+.section-count { white-space: nowrap; font-size: .78rem; color: var(--muted); background: #eef2f6; padding: 3px 8px; border-radius: 999px; }
+.tasks { padding: 6px 20px 12px; }
+.task { display: grid; grid-template-columns: 20px 1fr; gap: 11px; align-items: start; padding: 12px 0; border-bottom: 1px solid #edf1f5; cursor: pointer; }
+.task:last-child { border-bottom: 0; }
+.task input { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--accent); cursor: pointer; }
+.task span { overflow-wrap: anywhere; }
+.task input:checked + span { color: #788593; text-decoration: line-through; }
+.task:focus-within { outline: 2px solid #94bce0; outline-offset: 3px; border-radius: 4px; }
+footer { color: var(--muted); font-size: .86rem; margin-top: 20px; }
+.note { border-left: 3px solid var(--accent); padding: 10px 13px; background: #edf4fb; border-radius: 0 8px 8px 0; }
+@media (max-width: 560px) {
+ .wrap { padding: 14px 10px 32px; }
+ header { padding: 20px; }
+ .section-head { padding: 15px; }
+ .tasks { padding: 5px 15px 10px; }
+ .progress-card { padding: 15px; }
+}
+@media print {
+ body { background: #fff; }
+ .wrap { max-width: none; padding: 0; }
+ header, .progress-card, .category { box-shadow: none; break-inside: avoid; }
+ .actions { display: none; }
+ .task input { print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Reviewer response tracker</div>
+    <h1>PRISM Paper Revision Checklist</h1>
+    <p class="subtitle"><em>PRISM: Posit Systolic Array for Edge ML Acceleration</em></p>
+    <div class="meta">
+      <span class="pill">Paper ID 307</span>
+      <span class="pill">iSESNITGoa2026 · Second Round</span>
+      <span class="pill">33 checklist items</span>
+    </div>
+  </header>
+
+  <section class="progress-card" aria-label="Checklist progress">
+    <div class="progress-row"><span>Revision progress</span><span id="progress-label" aria-live="polite">0 / 33 complete</span></div>
+    <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="33" aria-valuenow="0" id="progress"><div id="progress-bar"></div></div>
+    <div class="small" id="progress-percent">0% completed · Your progress saves automatically in this browser.</div>
+    <div class="actions">
+      <button type="button" id="check-all">Check all</button>
+      <button type="button" id="uncheck-all">Uncheck all</button>
+      <button type="button" id="export">Export progress (.json)</button>
+      <button type="button" id="print">Print checklist</button>
+    </div>
+  </section>
+
+  <section class="category">
+      <div class="section-head"><h2>1. Architecture and Technical Clarifications</h2><span class="section-count" data-count>6 items</span></div>
+      <div class="tasks"><label class="task"><input type="checkbox" id="task-01" data-task="task-01"><span>Resolve the discrepancy between the 512-bit reference quire in the abstract and the 256-bit exact Posit16 quire in the main text.</span></label><label class="task"><input type="checkbox" id="task-02" data-task="task-02"><span>Justify theoretically why a 64-bit reduced quire is sufficient, considering operand range and accumulation length.</span></label><label class="task"><input type="checkbox" id="task-03" data-task="task-03"><span>Clearly define the Posit bit-width and exponent configuration used in the processing element (e.g. Posit(16,1)).</span></label><label class="task"><input type="checkbox" id="task-04" data-task="task-04"><span>Use consistent terminology: quire, reduced quire, and hierarchical reduced quire.</span></label><label class="task"><input type="checkbox" id="task-05" data-task="task-05"><span>Use one consistent Posit notation throughout the manuscript.</span></label><label class="task"><input type="checkbox" id="task-06" data-task="task-06"><span>Carefully qualify the claim of superior Posit dynamic range and support it with a quantitative comparison against IEEE floating-point formats.</span></label></div>
+    </section><section class="category">
+      <div class="section-head"><h2>2. Accuracy and Overflow Evaluation</h2><span class="section-count" data-count>7 items</span></div>
+      <div class="tasks"><label class="task"><input type="checkbox" id="task-07" data-task="task-07"><span>Add detailed, model-wise accuracy results in quantitative tables.</span></label><label class="task"><input type="checkbox" id="task-08" data-task="task-08"><span>Report the specific CNN architectures used for MNIST and CIFAR-10 (e.g. custom CNN, ResNet-18, MobileNet, as applicable).</span></label><label class="task"><input type="checkbox" id="task-09" data-task="task-09"><span>Evaluate the reduced-quire threshold on deeper and more complex vision models, if feasible.</span></label><label class="task"><input type="checkbox" id="task-10" data-task="task-10"><span>Expand overflow analysis using representative CNN activation, weight, and accumulation distributions.</span></label><label class="task"><input type="checkbox" id="task-11" data-task="task-11"><span>Provide deterministic overflow bounds or a theoretical bound where possible.</span></label><label class="task"><input type="checkbox" id="task-12" data-task="task-12"><span>Clarify the fixed-point scaling-factor equation, including proper typesetting and variable definitions.</span></label><label class="task"><input type="checkbox" id="task-13" data-task="task-13"><span>Clearly explain the experimental setup and methodology for accuracy evaluation.</span></label></div>
+    </section><section class="category">
+      <div class="section-head"><h2>3. Hardware Comparisons and Performance</h2><span class="section-count" data-count>7 items</span></div>
+      <div class="tasks"><label class="task"><input type="checkbox" id="task-14" data-task="task-14"><span>Identify the exact reference architecture used to calculate the reported 67% LUT reduction and 57% FF reduction.</span></label><label class="task"><input type="checkbox" id="task-15" data-task="task-15"><span>Ensure comparisons with prior work use consistent or clearly documented implementation conditions.</span></label><label class="task"><input type="checkbox" id="task-16" data-task="task-16"><span>Compare against more recent related papers and accelerators.</span></label><label class="task"><input type="checkbox" id="task-17" data-task="task-17"><span>Specify the baseline and exact percentage improvement behind the claim of improved latency.</span></label><label class="task"><input type="checkbox" id="task-18" data-task="task-18"><span>Clarify whether the 100 MHz ASIC frequency is a design constraint or the maximum achievable operating frequency.</span></label><label class="task"><input type="checkbox" id="task-19" data-task="task-19"><span>Report ASIC timing slack, area breakdown, and cell utilization if available.</span></label><label class="task"><input type="checkbox" id="task-20" data-task="task-20"><span>Document the power and performance measurement methodology for all comparisons.</span></label></div>
+    </section><section class="category">
+      <div class="section-head"><h2>4. Power, Frequency and ASIC Results</h2><span class="section-count" data-count>7 items</span></div>
+      <div class="tasks"><label class="task"><input type="checkbox" id="task-21" data-task="task-21"><span>Clarify whether the FPGA power figure is post-place-and-route estimation or actual board-level measurement.</span></label><label class="task"><input type="checkbox" id="task-22" data-task="task-22"><span>Explain the asterisk beside the 14.2 mW Deep Positron power result in Table II.</span></label><label class="task"><input type="checkbox" id="task-23" data-task="task-23"><span>Report the SKY130 ASIC target operating frequency and supply voltage.</span></label><label class="task"><input type="checkbox" id="task-24" data-task="task-24"><span>Provide a breakdown of ASIC dynamic power and leakage power, if available.</span></label><label class="task"><input type="checkbox" id="task-25" data-task="task-25"><span>Clarify the conditions under which the reported 22.2 mW SKY130 synthesis power was obtained.</span></label><label class="task"><input type="checkbox" id="task-26" data-task="task-26"><span>Fix Table II formatting, particularly the Delay and Power columns.</span></label><label class="task"><input type="checkbox" id="task-27" data-task="task-27"><span>Avoid broad practical-viability claims unless supported by complete throughput, power-efficiency, and application-level benchmarking.</span></label></div>
+    </section><section class="category">
+      <div class="section-head"><h2>5. References and Manuscript Structure</h2><span class="section-count" data-count>6 items</span></div>
+      <div class="tasks"><label class="task"><input type="checkbox" id="task-28" data-task="task-28"><span>Resolve the placeholder in reference [5].</span></label><label class="task"><input type="checkbox" id="task-29" data-task="task-29"><span>Correct and verify every bibliography entry.</span></label><label class="task"><input type="checkbox" id="task-30" data-task="task-30"><span>Update the related-work section with recent papers and more relevant comparisons.</span></label><label class="task"><input type="checkbox" id="task-31" data-task="task-31"><span>Fix the jump from Section VI to Section VIII; restore the missing section or correct the numbering.</span></label><label class="task"><input type="checkbox" id="task-32" data-task="task-32"><span>Proofread grammar and academic style, particularly in the architecture and related-work sections.</span></label><label class="task"><input type="checkbox" id="task-33" data-task="task-33"><span>Check equations, tables, figures, units, symbols, and cross-references in the final rendered PDF.</span></label></div>
+    </section>
+
+  <section class="category">
+    <div class="section-head"><h2>Suggested order of work</h2></div>
+    <div class="tasks">
+      <div class="task"><span>1.</span><span>Resolve quire-width inconsistencies and justify the 64-bit design.</span></div>
+      <div class="task"><span>2.</span><span>Strengthen accuracy, CNN benchmark, and overflow evidence.</span></div>
+      <div class="task"><span>3.</span><span>Make hardware, power, timing, and baseline comparisons reproducible.</span></div>
+      <div class="task"><span>4.</span><span>Update related work and correct all references.</span></div>
+      <div class="task"><span>5.</span><span>Finish formatting, notation, section numbering, and proofreading.</span></div>
+    </div>
+  </section>
+  <footer>
+    <p class="note"><strong>Important:</strong> If additional experiments are not feasible, state the experimental scope and limitations clearly. Distinguish measured results from synthesis or tool-based estimates; do not claim unverified results.</p>
+    <p>Checkboxes and progress are saved in this browser when local storage is available. Use “Export progress” to keep a backup or transfer your progress.</p>
+  </footer>
+</main>
+<script>
+(() => {
+  const boxes = [...document.querySelectorAll('input[type="checkbox"][data-task]')];
+  const storageKey = 'prism-review-checklist-paper-307-v1';
+  function update() {
+    const done = boxes.filter(b => b.checked).length;
+    const pct = Math.round(done / boxes.length * 100);
+    document.getElementById('progress-label').textContent = `${done} / ${boxes.length} complete`;
+    document.getElementById('progress-percent').textContent = `${pct}% completed · Your progress saves automatically in this browser.`;
+    document.getElementById('progress-bar').style.width = pct + '%';
+    const p = document.getElementById('progress');
+    p.setAttribute('aria-valuenow', done);
+    document.querySelectorAll('.category').forEach(section => {
+      const sectionBoxes = [...section.querySelectorAll('input[type="checkbox"][data-task]')];
+      const count = section.querySelector('[data-count]');
+      if (count) {
+        const checked = sectionBoxes.filter(b => b.checked).length;
+        count.textContent = `${checked} / ${sectionBoxes.length} done`;
+      }
+    });
+    try { localStorage.setItem(storageKey, JSON.stringify(boxes.filter(b=>b.checked).map(b=>b.id))); } catch (e) {}
+  }
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    boxes.forEach(b => b.checked = saved.includes(b.id));
+  } catch (e) {}
+  boxes.forEach(b => b.addEventListener('change', update));
+  document.getElementById('check-all').addEventListener('click', () => { boxes.forEach(b=>b.checked=true); update(); });
+  document.getElementById('uncheck-all').addEventListener('click', () => { boxes.forEach(b=>b.checked=false); update(); });
+  document.getElementById('print').addEventListener('click', () => window.print());
+  document.getElementById('export').addEventListener('click', () => {
+    const payload = { title: 'PRISM Paper Revision Checklist', paperId: 307, exportedAt: new Date().toISOString(),
+      completed: boxes.filter(b=>b.checked).map(b=>b.id), total: boxes.length };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'PRISM_checklist_progress.json'; a.click();
+    URL.revokeObjectURL(url);
+  });
+  update();
+})();
+</script>
+</body>
+</html>
